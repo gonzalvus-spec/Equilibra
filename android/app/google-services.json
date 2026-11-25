@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1070344226738",
+    "firebase_url": "https://equilibra-7450a-default-rtdb.firebaseio.com",
+    "project_id": "equilibra-7450a",
+    "storage_bucket": "equilibra-7450a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070344226738:android:9a15e0d47a90a6f70986ab",
+        "android_client_info": {
+          "package_name": "com.equilibra.equilibra"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGRWlKLER_QtqH57NJaSYlNjnX5h9R-nc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
