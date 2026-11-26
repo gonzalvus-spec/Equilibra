@@ -42,6 +42,7 @@ lib/
 │   ├── app_alerts.dart               # Diálogos visuales con cool_alert.
 │   ├── app_permissions.dart          # Solicitud ordenada de notificaciones, ubicación y Bluetooth.
 │   ├── background_service.dart       # Configuración/control del servicio en primer plano.
+│   ├── android_background_service_client.dart # Canal nativo Android del servicio en segundo plano.
 │   ├── background_runtime.dart       # Isolate del servicio: RFCOMM, GPS, latidos y listener remoto.
 │   ├── bluetooth_failure.dart        # Error de dominio para operaciones Bluetooth.
 │   └── app_logger.dart               # Singleton del historial interno (300 registros con ValueNotifier) y API info/ok/warn/error.

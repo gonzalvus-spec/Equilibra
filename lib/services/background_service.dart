@@ -1,12 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_background_service/flutter_background_service.dart';
+import 'package:flutter_background_service_platform_interface/flutter_background_service_platform_interface.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/background_keys.dart';
 import '../models/app_mode.dart';
+import 'android_background_service_client.dart';
 import 'app_initializer.dart';
 import 'app_logger.dart';
 import 'background_runtime.dart';
@@ -18,11 +19,13 @@ import 'background_runtime.dart';
 /// `ForegroundServiceStartNotAllowedException` (expuesta en Dart como
 /// [PlatformException]) y la app debe seguir operando en primer plano.
 class BackgroundService {
-  BackgroundService({FlutterBackgroundService? service, FirebaseAuth? auth})
-    : _service = service ?? FlutterBackgroundService(),
-      _authOverride = auth;
+  BackgroundService({
+    AndroidBackgroundServiceClient? service,
+    FirebaseAuth? auth,
+  }) : _service = service ?? AndroidBackgroundServiceClient(),
+       _authOverride = auth;
 
-  final FlutterBackgroundService _service;
+  final AndroidBackgroundServiceClient _service;
   final FirebaseAuth? _authOverride;
   FirebaseAuth? _auth;
 
@@ -47,7 +50,7 @@ class BackgroundService {
     );
     try {
       await _service.configure(
-        androidConfiguration: AndroidConfiguration(
+        AndroidConfiguration(
           onStart: backgroundOnStart,
           autoStart: false,
           autoStartOnBoot: false,
@@ -65,7 +68,6 @@ class BackgroundService {
                 ]
               : const [AndroidForegroundType.dataSync],
         ),
-        iosConfiguration: IosConfiguration(autoStart: false),
       );
       AppLogger.ok(LogTags.bgService, 'Servicio configurado correctamente.');
     } on PlatformException catch (error, stack) {

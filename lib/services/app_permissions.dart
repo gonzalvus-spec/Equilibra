@@ -178,11 +178,7 @@ class AppPermissions {
   }
 
   Future<void> _requestLocation() async {
-    if (kIsWeb ||
-        (_platform != TargetPlatform.android &&
-            _platform != TargetPlatform.iOS)) {
-      return;
-    }
+    if (kIsWeb || _platform != TargetPlatform.android) return;
     // `requestPermission()` solicita únicamente ubicación en primer plano
     // (`whileInUse`). Nunca se vuelve a pedir para pasar a segundo plano en
     // este lote.
